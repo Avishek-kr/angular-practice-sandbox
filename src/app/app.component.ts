@@ -2,12 +2,16 @@ import { Component } from "@angular/core";
 
 @Component({
   selector: "app-root",
-  template: `<h1 *ngIf="displayName; else elseBlock">Avishek</h1>
-    <ng-template #elseBlock>
-      <h3>Name is hidden</h3>
-    </ng-template> `,
+  template: `
+    <div [ngSwitch]="color">
+      <div *ngSwitchCase="'red'">Color is {{ color }}</div>
+      <div *ngSwitchCase="'blue'">Color is {{ color }}</div>
+      <div *ngSwitchCase="'green'">Color is {{ color }}</div>
+      <div *ngSwitchDefault>pick a color</div>
+    </div>
+  `,
   styleUrls: []
 })
 export class AppComponent {
-  displayName = false;
+  color = "green";
 }
